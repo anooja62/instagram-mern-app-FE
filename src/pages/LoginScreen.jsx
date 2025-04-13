@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Insta from "../assets/Instagram_icon.png"
+import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
+  const navigate = useNavigate();  // Using react-router's navigate hook to programmatically navigate
   const handleLogin = () => {
     window.location.href = 'https://instagram-mern-app-be.onrender.com/auth/instagram'; 
   };
+
+  useEffect(() => {
+    // Check if there are query parameters (access_token and user_id)
+    const params = new URLSearchParams(window.location.search);
+    const accessToken = params.get('access_token');
+    const userId = params.get('user_id');
+
+    if (accessToken && userId) {
+      // If access_token and user_id exist, redirect to the dashboard
+      navigate(`/dashboard?access_token=${accessToken}&user_id=${userId}`);
+    }
+  }, [navigate]);
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
