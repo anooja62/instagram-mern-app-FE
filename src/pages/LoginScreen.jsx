@@ -3,7 +3,7 @@ import Insta from "../assets/Instagram_icon.png"
 
 const LoginScreen = () => {
   const handleLogin = () => {
-    window.location.href = 'https://instagram-mern-app-be.onrender.com/auth/instagram'; // Backend login redirect
+    window.location.href = 'https://instagram-mern-app-be.onrender.com/auth/instagram'; 
   };
 
   return (
